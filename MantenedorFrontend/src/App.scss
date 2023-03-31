@@ -1,0 +1,459 @@
+.Grilla {
+
+	overflow-y: scroll;
+
+    .Boton {
+
+        width: 100%;
+
+		height: 5em;
+
+        margin-bottom: 2%;
+
+        background-color: rgb(255, 175, 2);
+
+        border: none;
+
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 2%;
+
+        color: white;
+
+        font-weight: 700;
+        
+        font-size: 1rem;
+
+    }
+
+	table {
+
+		width: 100%;
+
+		display: grid;
+
+		gap: 2%;
+
+		tr {
+
+			background-color: white;
+
+			box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+			display: flex;
+
+			height: 5em;
+
+			td {
+
+				flex: 1;
+
+				text-align: center;
+
+				vertical-align: middle;
+
+				display: flex;
+
+				align-items: center;
+
+				justify-content: center;
+
+			}
+
+			td:nth-child(1) {
+
+				flex: 2;
+
+			}
+
+			td:nth-child(3) {
+
+				flex: 0.75;
+
+			}
+
+			td:nth-child(4) {
+
+				flex: 2;
+
+			}
+	
+		}
+
+		tr[aria-selected="true"] {
+
+			background-color: rgb(233, 232, 232);
+
+		}
+
+	}
+
+  
+}
+
+.Persona {
+
+	background-color: white;
+
+	padding: 0 5%;
+
+	overflow-y: scroll;
+
+    .ContenedorBotones {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 2%;
+
+        button {
+
+            display: flex;
+
+            align-items: center;
+    
+            justify-content: center;
+    
+            gap: 2%;
+
+            flex: 1;
+
+			height: 4em;
+
+            margin-bottom: 4%;
+
+            color: white;
+
+            font-weight: 700;
+
+        }
+        
+    }
+
+}
+
+.Spinner {
+
+	width: 40px;
+
+	height: 40px;
+
+	background-color: #704c09;
+  
+	margin: 100px auto;
+
+	-webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+
+	animation: sk-rotateplane 1.2s infinite ease-in-out;
+
+}
+  
+@-webkit-keyframes sk-rotateplane {
+
+	0% { -webkit-transform: perspective(120px) }
+
+	50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+
+	100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+
+}
+  
+@keyframes sk-rotateplane {
+
+	0% { 
+
+	  transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+
+	  -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+
+	} 50% { 
+
+	  transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+
+	  -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+
+	} 100% { 
+
+	  transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+
+	  -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+
+	}
+
+}
+
+.ContenedorInputTexto {
+
+    margin: 10px 0px;
+
+    width: 100%;
+
+    height: 60px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    .Input {
+
+        width: 100%;
+
+        height: 100%;
+
+        background: none;
+
+        color: black;
+
+        padding-top: 20px;
+
+        border: none;
+
+        outline: 0px;
+        
+    }
+
+    .Linea { 
+
+        position: absolute;
+
+        bottom: 0;
+
+        left: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        pointer-events: none;
+
+        border-bottom: 1px solid #c7c7c7;
+
+        .Etiqueta {
+
+            position: absolute;
+    
+            bottom: 5px;
+    
+            left: 0px;
+    
+            transition: all 0.3s ease;
+    
+            color: black;
+    
+        }
+
+        .Ver {
+
+            pointer-events: all;
+        
+            position: absolute;
+        
+            bottom: 5px;
+            
+            right: 0;
+        
+            transition: all 0.3s ease;
+        
+            color: transparent;
+        
+            cursor: default;
+        
+            width: 80px; 
+            
+            text-align: center;
+            
+        }
+        
+    }
+
+    .Linea::after {
+
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+
+        bottom: -1px;
+
+        width: 100%;
+
+        height: 100%;
+
+        border-bottom: 1px solid #FF9D4F;
+
+        transform: translateX(-100%);
+
+        transition: all 0.3s ease;
+
+    }
+    
+}
+
+// Cambiar de color el texto cuando el input tiene texto y cuando posicionamos el cursor sobre él.
+.Input:valid + .Linea .Ver:hover {
+
+    color: #FF9D4F;
+
+}
+
+// Vuelve a su color original cuando el input no tiene texto.
+.Input:valid + .Linea .Ver {
+
+    color: black;
+
+    cursor: pointer;
+
+}
+
+// Cambia de color la etiqueta cuando se focusea o tiene texto el input.
+.Input:focus + .Linea .Etiqueta, .Input:valid + .Linea .Etiqueta {
+
+    transform: translateY(-150%);
+
+    font-size: 14px;
+
+    color: #FF9D4F;
+
+}
+
+// Ubica la linea naranja cuando se focusea el input.
+.Input:focus + .Linea::after {
+
+    transform: translateX(0%);
+
+}
+
+.popup {
+
+    position: fixed;
+
+    // width: 100%;
+    
+    // height: 100%;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    // margin: auto;
+
+    // background-color: rgba(0,0,0, 0.5);
+
+}
+
+.popup_inner {
+
+    position: absolute;
+
+    left: 25%;
+
+    right: 25%;
+
+    top: 25%;
+
+    bottom: 25%;
+
+    margin: auto;
+
+    background: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10%;
+
+    .ContenedorBotones {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 2%;
+
+        width: 100%;
+
+        padding: 0% 20%;
+
+        button {
+
+            display: flex;
+
+            align-items: center;
+    
+            justify-content: center;
+    
+            gap: 2%;
+
+
+
+			height: 4em;
+
+            margin-bottom: 4%;
+
+            color: white;
+
+            font-weight: 700;
+
+        }
+        
+    }
+
+}
+
+.popupmini_inner {
+    
+    .popup {
+
+        pointer-events: none;
+
+    }
+
+    position: absolute;
+
+    left: 25%;
+
+    right: 25%;
+
+    top: 2.5%;
+
+    bottom: 92.5%;
+
+    margin: auto;
+
+    background: white;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10%;
+
+    border-radius: 1rem;
+
+}
+
